@@ -542,6 +542,27 @@
   dependencies:
     tslib "^2.8.0"
 
+"@heroui/accordion@^2.2.14":
+  version "2.2.14"
+  resolved "https://registry.yarnpkg.com/@heroui/accordion/-/accordion-2.2.14.tgz#a0faafb1d1b7230796fef28c62471c9e805eb6c6"
+  integrity sha512-l0ieRU5FPgEEnNi8w74AaPM5WnjfR2dYEI6ypovqtbnsrU8U5tTP76jWpkqPPqYfLCxInWwmTeFt7hqyajFNOA==
+  dependencies:
+    "@heroui/aria-utils" "2.2.14"
+    "@heroui/divider" "2.2.11"
+    "@heroui/dom-animation" "2.1.6"
+    "@heroui/framer-utils" "2.1.13"
+    "@heroui/react-utils" "2.1.8"
+    "@heroui/shared-icons" "2.1.6"
+    "@heroui/shared-utils" "2.1.7"
+    "@heroui/use-aria-accordion" "2.2.9"
+    "@react-aria/button" "3.12.1"
+    "@react-aria/focus" "3.20.1"
+    "@react-aria/interactions" "3.24.1"
+    "@react-aria/utils" "3.28.1"
+    "@react-stately/tree" "3.8.8"
+    "@react-types/accordion" "3.0.0-alpha.26"
+    "@react-types/shared" "3.28.0"
+
 "@heroui/aria-utils@2.2.14":
   version "2.2.14"
   resolved "https://registry.yarnpkg.com/@heroui/aria-utils/-/aria-utils-2.2.14.tgz#491bffc972de0e0b61d477bc5f4d9a73d329e044"
@@ -879,6 +900,19 @@
     "@react-stately/tooltip" "3.5.2"
     "@react-types/overlays" "3.8.13"
     "@react-types/tooltip" "3.4.15"
+
+"@heroui/use-aria-accordion@2.2.9":
+  version "2.2.9"
+  resolved "https://registry.yarnpkg.com/@heroui/use-aria-accordion/-/use-aria-accordion-2.2.9.tgz#b76da26242d977621b79946d00e02c06c9512652"
+  integrity sha512-g670jMo0+wCI/+F2VTL++prmcNpRQ+emekDRivzc4uA7P8b8912FwUsWxE/L/nZMPl9+BpkT+ZxFud7ZJH8oow==
+  dependencies:
+    "@react-aria/button" "3.12.1"
+    "@react-aria/focus" "3.20.1"
+    "@react-aria/selection" "3.23.1"
+    "@react-aria/utils" "3.28.1"
+    "@react-stately/tree" "3.8.8"
+    "@react-types/accordion" "3.0.0-alpha.26"
+    "@react-types/shared" "3.28.0"
 
 "@heroui/use-aria-button@2.2.11":
   version "2.2.11"
@@ -1418,6 +1452,19 @@
     "@react-types/shared" "^3.28.0"
     "@swc/helpers" "^0.5.0"
 
+"@react-aria/selection@3.23.1":
+  version "3.23.1"
+  resolved "https://registry.yarnpkg.com/@react-aria/selection/-/selection-3.23.1.tgz#7e344d0bf9e2eaf29a6d534f8d4cd912af3fd88e"
+  integrity sha512-z4vVw7Fw0+nK46PPlCV8TyieCS+EOUp3eguX8833fFJ/QDlFp3Ewgw2T5qCIix5U3siXPYU0ZmAMOdrjibdGpQ==
+  dependencies:
+    "@react-aria/focus" "^3.20.1"
+    "@react-aria/i18n" "^3.12.7"
+    "@react-aria/interactions" "^3.24.1"
+    "@react-aria/utils" "^3.28.1"
+    "@react-stately/selection" "^3.20.0"
+    "@react-types/shared" "^3.28.0"
+    "@swc/helpers" "^0.5.0"
+
 "@react-aria/selection@^3.23.1":
   version "3.24.0"
   resolved "https://registry.yarnpkg.com/@react-aria/selection/-/selection-3.24.0.tgz#b8d93e514bccba0e8c2545564d7eb50023560c88"
@@ -1677,6 +1724,17 @@
     "@react-types/tooltip" "^3.4.16"
     "@swc/helpers" "^0.5.0"
 
+"@react-stately/tree@3.8.8":
+  version "3.8.8"
+  resolved "https://registry.yarnpkg.com/@react-stately/tree/-/tree-3.8.8.tgz#48bdb3579b91788afc04b97127b18acbed2eb367"
+  integrity sha512-21WB9kKT9+/tr6B8Q4G53tZXl/3dftg5sZqCR6x055FGd2wGVbkxsLhQLmC+XVkTiLU9pB3BjvZ9eaSj1D8Wmg==
+  dependencies:
+    "@react-stately/collections" "^3.12.2"
+    "@react-stately/selection" "^3.20.0"
+    "@react-stately/utils" "^3.10.5"
+    "@react-types/shared" "^3.28.0"
+    "@swc/helpers" "^0.5.0"
+
 "@react-stately/utils@3.10.5":
   version "3.10.5"
   resolved "https://registry.yarnpkg.com/@react-stately/utils/-/utils-3.10.5.tgz#47bb91cd5afd1bafe39353614e5e281b818ebccc"
@@ -1690,6 +1748,13 @@
   integrity sha512-O76ip4InfTTzAJrg8OaZxKU4vvjMDOpfA/PGNOytiXwBbkct2ZeZwaimJ8Bt9W1bj5VsZ81/o/tW4BacbdDOMA==
   dependencies:
     "@swc/helpers" "^0.5.0"
+
+"@react-types/accordion@3.0.0-alpha.26":
+  version "3.0.0-alpha.26"
+  resolved "https://registry.yarnpkg.com/@react-types/accordion/-/accordion-3.0.0-alpha.26.tgz#bbfa464331911fdb3500f8b405d446afeabee224"
+  integrity sha512-OXf/kXcD2vFlEnkcZy/GG+a/1xO9BN7Uh3/5/Ceuj9z2E/WwD55YwU3GFM5zzkZ4+DMkdowHnZX37XnmbyD3Mg==
+  dependencies:
+    "@react-types/shared" "^3.27.0"
 
 "@react-types/button@3.11.0":
   version "3.11.0"
@@ -1811,7 +1876,7 @@
   resolved "https://registry.yarnpkg.com/@react-types/shared/-/shared-3.28.0.tgz#7b4b5485b758228bdbe31ecae66ed07a29e2be4d"
   integrity sha512-9oMEYIDc3sk0G5rysnYvdNrkSg7B04yTKl50HHSZVbokeHpnU0yRmsDaWb9B/5RprcKj8XszEk5guBO8Sa/Q+Q==
 
-"@react-types/shared@^3.28.0", "@react-types/shared@^3.29.0":
+"@react-types/shared@^3.27.0", "@react-types/shared@^3.28.0", "@react-types/shared@^3.29.0":
   version "3.29.0"
   resolved "https://registry.yarnpkg.com/@react-types/shared/-/shared-3.29.0.tgz#f29bdad3bff1336aaa754d7abc420da2f014d931"
   integrity sha512-IDQYu/AHgZimObzCFdNl1LpZvQW/xcfLt3v20sorl5qRucDVj4S9os98sVTZ4IRIBjmS+MkjqpR5E70xan7ooA==

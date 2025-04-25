@@ -5,8 +5,23 @@ import { retrieveSubscription } from "@/actions/retrieve-subscription";
 import { Session } from "next-auth";
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 
+const translations = new Map<string, string>([
+    ['active', 'Ativo'],
+    ['canceled', 'Cancelado'],
+    ['inactive', 'Inativo'],
+]);
+
+export function translateStripeStatus(status: string) {
+    const translation = translations.get(status);
+    if (!translation)
+      throw new Error(`Status Stripe desconhecido: ${status}`);
+    return translation;
+}
+
+export type SubscriptionStatus = 'active' | 'canceled' | 'inactive'
+
 export type Subscription = {
-    status: string,
+    status: SubscriptionStatus,
     startDate: number,
     endDate: number;
 }
