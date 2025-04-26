@@ -111,6 +111,7 @@ resource "vercel_project_domain" "client_domain" {
 resource "vercel_deployment" "client_deploy" {
   project_id = vercel_project.client.id
   production = true
+  ref = "main"
 
   depends_on = [
     vercel_project_environment_variables.client_vars
