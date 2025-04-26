@@ -3,7 +3,7 @@ const nextConfig = {
     eslint: {
         ignoreDuringBuilds: true
     },
-    serverExternalPackages: ['dynamoose']
+    serverExternalPackages: ['dynamoose', 'stripe']
 };
 
 module.exports = nextConfig;
