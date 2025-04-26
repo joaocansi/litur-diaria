@@ -36,6 +36,10 @@ resource "vercel_project" "client" {
   }
 
   root_directory = "client"
+
+  lifecycle {
+    ignore_changes = [ git_repository ]
+  }
 }
 
 resource "vercel_project_environment_variables" "client_vars" {
@@ -102,6 +106,15 @@ resource "vercel_project_environment_variables" "client_vars" {
 resource "vercel_project_domain" "client_domain" {
   project_id = vercel_project.client.id
   domain     = var.client_domain
+}
+
+resource "vercel_deployment" "client_deploy" {
+  project_id = vercel_project.client.id
+  production = true
+
+  depends_on = [
+    vercel_project_environment_variables.client_vars
+  ]
 }
 
 # resource "stripe_webhook_endpoint" "webhook" {
