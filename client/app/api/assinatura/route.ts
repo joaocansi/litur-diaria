@@ -10,7 +10,7 @@ export async function POST() {
     }
 
     const payment = await Payment.get(session.user.email);
-    if (payment.status === 'paid') {
+    if (payment && payment.status === 'paid') {
         return Response.redirect('/', 303);
     }
 
