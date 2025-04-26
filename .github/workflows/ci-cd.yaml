@@ -1,0 +1,61 @@
+name: CI/CD pipeline for client and lambda functions
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    needs: docker-build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v1
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: Terraform apply
+        env:
+          stripe_api_key: ${{ secrets.STRIPE_API_KEY }}
+          vercel_api_key: ${{ secrets.VERCEL_API_KEY }}
+          client_domain: ${{ secrets.CLIENT_DOMAIN }}
+          client_url: ${{ secrets.CLIENT_URL }}
+          google_client_secret: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          google_client_id: ${{ secrets.GOOGLE_CLIENT_ID }}
+          nextauth_secret: ${{ secrets.NEXTAUTH_SECRET }}
+          stripe_secret_key: ${{ secrets.STRIPE_SECRET_KEY }}
+          stripe_webhook_secret: ${{ secrets.STRIPE_WEBHOOK_SECRET }}
+          stripe_price_id: ${{ secrets.STRIPE_PRICE_ID }}
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: ${{ secrets.AWS_REGION }}
+        run: |
+          export TF_VAR_stripe_api_key=$stripe_api_key
+          export TF_VAR_vercel_api_key=$vercel_api_key
+          export TF_VAR_client_domain=$client_domain
+          export TF_VAR_client_url=$client_url
+          export TF_VAR_google_client_secret=$google_client_secret
+          export TF_VAR_google_client_id=$google_client_id
+          export TF_VAR_nextauth_secret=$nextauth_secret
+          export TF_VAR_stripe_secret_key=$stripe_secret_key
+          export TF_VAR_stripe_webhook_secret=$stripe_webhook_secret
+          export TF_VAR_stripe_price_id=$stripe_price_id
+          export TF_VAR_aws_access_key_id=$aws_access_key_id
+          export TF_VAR_aws_secret_access_key=$aws_secret_access_key
+          export TF_VAR_aws_region=$aws_region
+
+          cd terraform/
+          terraform init
+          terraform plan
+          terraform apply -auto-approve
+          echo "Done!"

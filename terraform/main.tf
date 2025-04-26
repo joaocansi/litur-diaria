@@ -9,6 +9,12 @@ terraform {
       version = "2.15.1"
     }
   }
+  backend "s3" {
+    bucket         = "liturgia-s3"
+    key            = "terraform/state"
+    region         = "us-east-1"
+    encrypt        = true
+  }
 }
 
 provider "vercel" {
