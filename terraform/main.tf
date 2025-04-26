@@ -37,7 +37,7 @@ resource "vercel_project" "client" {
   root_directory = "client"
 
   # avoids build automatically (terraform must deploy)
-  ignore_command = 0
+  ignore_command = "exit 0"
 }
 
 resource "vercel_project_domain" "client_domain" {
