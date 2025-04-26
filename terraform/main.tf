@@ -10,7 +10,7 @@ terraform {
     }
   }
   backend "s3" {
-    bucket         = "liturgia-s3"
+    bucket         = "liturgia-terraform-state"
     key            = "terraform/state"
     region         = "us-east-1"
     encrypt        = true
