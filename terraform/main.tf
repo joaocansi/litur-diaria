@@ -32,36 +32,76 @@ resource "vercel_project" "client" {
   git_repository = {
     repo = "joaocansi/liturgia-diaria"
     type = "github"
+    production_branch = "main"
   }
 
   root_directory = "client"
+}
 
-  # avoids build automatically (terraform must deploy)
-  ignore_command = "exit 0"
+resource "vercel_project_environment_variables" "client_vars" {
+  project_id = vercel_project.client.id
+  variables = [
+    {
+      key    = "NEXT_PUBLIC_BASE_URL"
+      value  = var.client_url
+      target = ["production", "preview"]
+    },
+    {
+      key    = "NEXTAUTH_URL"
+      value  = var.client_url
+      target = ["production", "preview"]
+    },
+    {
+      key    = "NEXTAUTH_SECRET"
+      value  = var.nextauth_secret
+      target = ["production", "preview"]
+    },
+    {
+      key    = "GOOGLE_CLIENT_ID"
+      value  = var.google_client_id
+      target = ["production", "preview"]
+    },
+    {
+      key    = "GOOGLE_CLIENT_SECRET"
+      value  = var.google_client_secret
+      target = ["production", "preview"]
+    },
+    {
+      key    = "STRIPE_SECRET_KEY"
+      value  = var.stripe_secret_key
+      target = ["production", "preview"]
+    },
+    {
+      key    = "STRIPE_WEBHOOK_SECRET"
+      value  = var.stripe_webhook_secret
+      target = ["production", "preview"]
+    },
+    {
+      key    = "STRIPE_PRICE_ID"
+      value  = var.stripe_price_id
+      target = ["production", "preview"]
+    },
+    {
+      key    = "AWS_ACCESS_KEY_ID"
+      value  = var.aws_access_key_id
+      target = ["production", "preview"]
+    },
+    {
+      key    = "AWS_SECRET_ACCESS_KEY"
+      value  = var.aws_secret_access_key
+      target = ["production", "preview"]
+    },
+    {
+      key    = "AWS_REGION"
+      value  = var.aws_region
+      target = ["production", "preview"]
+    }
+  ]
 }
 
 resource "vercel_project_domain" "client_domain" {
   project_id = vercel_project.client.id
   domain     = var.client_domain
-}
-
-resource "vercel_deployment" "client_deploy" {
-  project_id = vercel_project.client.id
-  ref = "main"
-
-  environment = {
-    NEXT_PUBLIC_BASE_URL   = var.client_url
-    NEXTAUTH_URL           = var.client_url
-    NEXTAUTH_SECRET        = var.nextauth_secret
-    GOOGLE_CLIENT_ID       = var.google_client_id
-    GOOGLE_CLIENT_SECRET   = var.google_client_secret
-    STRIPE_SECRET_KEY      = var.stripe_secret_key
-    STRIPE_WEBHOOK_SECRET  = var.stripe_webhook_secret
-    STRIPE_PRICE_ID        = var.stripe_price_id
-    AWS_ACCESS_KEY_ID      = var.aws_access_key_id
-    AWS_SECRET_ACCESS_KEY  = var.aws_secret_access_key
-    AWS_REGION             = var.aws_region
-  }
 }
 
 # resource "stripe_webhook_endpoint" "webhook" {
