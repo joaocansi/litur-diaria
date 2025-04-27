@@ -30,7 +30,7 @@ resource "vercel_project" "client" {
   framework = "nextjs"
 
   git_repository = {
-    repo = "joaocansi/liturgia-diaria"
+    repo = "joaocansi/litur-diaria"
     type = "github"
     production_branch = "main"
   }
