@@ -35,8 +35,6 @@ resource "vercel_project" "client" {
     production_branch = "main"
   }
 
-  root_directory = "client"
-
   lifecycle {
     ignore_changes = [ git_repository ]
   }
