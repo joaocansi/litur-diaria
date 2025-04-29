@@ -3,18 +3,16 @@ import { Metadata, Viewport } from "next";
 import clsx from "clsx";
 
 import { Providers } from "./providers";
-import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
-import { getServerSession } from "next-auth";
 
 export const metadata: Metadata = {
   title: {
-    default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
+    default: "Liturgia Diária - Entrar",
+    template: "%s"
   },
-  description: siteConfig.description,
+  description: "Um site dedicado a reflexões espirituais diárias baseadas na liturgia, ajudando você a se conectar com a fé e a espiritualidade.",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/icon.png",
   },
 };
 
