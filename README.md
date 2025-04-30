@@ -1,53 +1,21 @@
-# Next.js & HeroUI Template
+# litur-diaria ✝️📖
 
-This is a template for creating applications using Next.js 14 (app directory) and HeroUI (v2).
+A daily liturgy web app built with [Next.js](https://nextjs.org/). It fetches daily Catholic liturgy from Canção Nova and provides a reflection through AI.
 
-[Try it on CodeSandbox](https://githubbox.com/heroui-inc/heroui/next-app-template)
+## Features
 
-## Technologies Used
+- Scrapes daily liturgical texts (1st reading, psalm, Gospel)
+- Uses GPT to generate a brief reflection
+- Sends email to subscribed users
+- Scheduled to run every day at 5am using serverless functions (optional)
 
-- [Next.js 14](https://nextjs.org/docs/getting-started)
-- [HeroUI v2](https://heroui.com/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Tailwind Variants](https://tailwind-variants.org)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Framer Motion](https://www.framer.com/motion/)
-- [next-themes](https://github.com/pacocoursey/next-themes)
+---
 
-## How to Use
+## Getting Started
 
-### Use the template with create-next-app
-
-To create a new project based on this template using `create-next-app`, run the following command:
+### 1. Clone the repository
 
 ```bash
-npx create-next-app -e https://github.com/heroui-inc/next-app-template
+git clone https://github.com/your-username/litur-diaria.git
+cd litur-diaria
 ```
-
-### Install dependencies
-
-You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
-
-```bash
-npm install
-```
-
-### Run the development server
-
-```bash
-npm run dev
-```
-
-### Setup pnpm (optional)
-
-If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
-
-```bash
-public-hoist-pattern[]=*@heroui/*
-```
-
-After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
-
-## License
-
-Licensed under the [MIT license](https://github.com/heroui-inc/next-app-template/blob/main/LICENSE).
