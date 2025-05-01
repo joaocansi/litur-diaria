@@ -16,7 +16,7 @@ export default async function Home() {
                 <h1 className="text-6xl font-extrabold text-amber-900 mb-4">Liturgia Diária</h1>
                 <Divider />
                 <h2 className="text-3xl font-extrabold mb-4 mt-6">Transforme seu dia com meditações diárias da liturgia!</h2>
-                <p className="mb-6 text-gray-700">Cadastre-se agora e receba conteúdos exclusivos diretamente no seu e-mail por apenas R$6,00.</p>
+                <p className="mb-6">Cadastre-se agora e receba conteúdos exclusivos diretamente no seu e-mail por apenas R$6,00.</p>
                 <SignInButton />
             </div>
             <Footer />

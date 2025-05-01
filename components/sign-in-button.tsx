@@ -12,7 +12,7 @@ export function SignInButton() {
 
   return (
     <Button
-      className="bg-amber-100"
+      className="bg-amber-300 text-black"
       size="lg"
       startContent={<img alt="google icon" className="w-6 h-6" src="/baixados.png" />}
       onPress={handleGoogleSignIn}

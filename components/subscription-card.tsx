@@ -116,7 +116,7 @@ export function SubscriptionCard() {
                   type="submit"
                   isLoading={buttonLoading}
                   aria-label="Assinar agora"
-                  className="bg-amber-100">
+                  className="bg-amber-300">
                   Assinar
                 </Button>
               </form>
