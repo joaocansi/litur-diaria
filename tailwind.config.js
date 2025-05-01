@@ -15,7 +15,7 @@ const config = {
       },
     },
   },
-  darkMode: false,
+  
   plugins: [heroui()],
 }
 
