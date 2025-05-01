@@ -28,12 +28,17 @@ provider "stripe" {
 resource "vercel_project" "client" {
   name      = "liturgia"
   framework = "nextjs"
+}
 
-  git_repository = {
-    repo = "joaocansi/litur-diaria"
-    type = "github"
-    production_branch = "main"
-  }
+data "vercel_project_directory" "client_directory" {
+  path = "../"
+}
+
+resource "vercel_deployment" "client_deployment" {
+  project_id = vercel_project.client.id
+  files = data.vercel_project_directory.client_directory.files
+  path_prefix = "../"
+  production = true
 }
 
 resource "vercel_project_environment_variables" "client_vars" {
@@ -113,15 +118,17 @@ resource "vercel_project_domain" "client_domain" {
   domain     = var.client_domain
 }
 
-resource "vercel_deployment" "client_deploy" {
-  project_id = vercel_project.client.id
-  production = true
-  ref = "main"
+# resource "vercel_deployment" "client_deploy" {
+#   delete_on_destroy = true
 
-  depends_on = [
-    vercel_project_environment_variables.client_vars
-  ]
-}
+#   project_id = vercel_project.client.id
+#   production = true
+#   ref = "main"
+
+#   depends_on = [
+#     vercel_project_environment_variables.client_vars
+#   ]
+# }
 
 # resource "stripe_webhook_endpoint" "webhook" {
 #   url         = var.client_url
