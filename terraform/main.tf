@@ -39,6 +39,10 @@ resource "vercel_deployment" "client_deployment" {
   files = data.vercel_project_directory.client_directory.files
   path_prefix = "../"
   production = true
+
+  lifecycle {
+    replace_triggered_by = [ vercel_project_environment_variables.client_vars ]
+  }
 }
 
 resource "vercel_project_environment_variables" "client_vars" {
