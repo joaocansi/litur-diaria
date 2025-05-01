@@ -43,56 +43,67 @@ resource "vercel_project_environment_variables" "client_vars" {
       key    = "NEXT_PUBLIC_BASE_URL"
       value  = var.client_url
       target = ["production", "preview"]
+      sensitive = true
     },
     {
       key    = "NEXTAUTH_URL"
       value  = var.client_url
       target = ["production", "preview"]
+      sensitive = true
     },
     {
       key    = "NEXTAUTH_SECRET"
       value  = var.nextauth_secret
       target = ["production", "preview"]
+      sensitive = true
     },
     {
       key    = "GOOGLE_CLIENT_ID"
       value  = var.google_client_id
       target = ["production", "preview"]
+      sensitive = true
     },
     {
       key    = "GOOGLE_CLIENT_SECRET"
       value  = var.google_client_secret
       target = ["production", "preview"]
+      sensitive = true
     },
     {
       key    = "STRIPE_SECRET_KEY"
       value  = var.stripe_secret_key
       target = ["production", "preview"]
+      sensitive = true
     },
     {
       key    = "STRIPE_WEBHOOK_SECRET"
       value  = var.stripe_webhook_secret
       target = ["production", "preview"]
+      sensitive = true
     },
     {
       key    = "STRIPE_PRICE_ID"
       value  = var.stripe_price_id
       target = ["production", "preview"]
+      sensitive = true
     },
     {
       key    = "AWS_ACCESS_KEY_ID"
       value  = var.aws_access_key_id
       target = ["production", "preview"]
+      sensitive = true
     },
     {
       key    = "AWS_SECRET_ACCESS_KEY"
       value  = var.aws_secret_access_key
       target = ["production", "preview"]
+      sensitive = true
     },
     {
       key    = "AWS_REGION"
       value  = var.aws_region
       target = ["production", "preview"]
+      sensitive = true
     }
   ]
 }
