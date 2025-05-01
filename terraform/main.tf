@@ -34,10 +34,6 @@ resource "vercel_project" "client" {
     type = "github"
     production_branch = "main"
   }
-
-  lifecycle {
-    ignore_changes = [ git_repository ]
-  }
 }
 
 resource "vercel_project_environment_variables" "client_vars" {

@@ -52,10 +52,8 @@ jobs:
           export TF_VAR_aws_access_key_id=$aws_access_key_id
           export TF_VAR_aws_secret_access_key=$aws_secret_access_key
           export TF_VAR_aws_region=$aws_region
-
           cd terraform/
           terraform init
-          terraform import vercel_project.client liturgia || echo "Vercel project not found, continuing without import."
           terraform plan
           terraform apply -auto-approve
           echo "Done!"
