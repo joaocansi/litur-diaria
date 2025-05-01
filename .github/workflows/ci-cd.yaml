@@ -55,6 +55,7 @@ jobs:
 
           cd terraform/
           terraform init
+          terraform import vercel_project.client liturgia || echo "Vercel project not found, continuing without import."
           terraform plan
           terraform apply -auto-approve
           echo "Done!"
