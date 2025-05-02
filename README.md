@@ -38,12 +38,24 @@ npm install
 Create a `.env.local` file with the following:
 
 ```env
-GPT_API_KEY=your_openai_key
-EMAIL_HOST=smtp.example.com
-EMAIL_USER=your@email.com
-EMAIL_PASS=your_password
-EMAIL_FROM="Litur Diaria <noreply@example.com>"
+NEXT_PUBLIC_BASE_URL=
+NEXTAUTH_URL=$NEXT_PUBLIC_BASE_URL # Do not modify
+NEXTAUTH_SECRET=
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+STRIPE_SECRET_KEY=
+STRIPE_WEBHOOK_SECRET=
+STRIPE_PRICE_ID=
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_REGION=
 ```
+
+External service configuration instructions:
+- GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET, see [OAuth Google](https://developers.google.com/identity/protocols/oauth2?hl=pt-br)
+- STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET and STRIPE_PRICE_ID, see [Build a subscriptions integration](https://docs.stripe.com/billing/subscriptions/build-subscriptions?platform=web&ui=stripe-hosted#provision-and-monitor)
+  - For this project, I used only three webhook events: **invoice.paid, invoice.payment_failed and customer.subscription.deleted**.
+- AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY and AWS_REGION, see [The Complete Guide to AWS Identity and Access Management](https://www.datacamp.com/tutorial/aws-identity-and-access-management-iam-guide)
 
 ### 4. Start in development mode
 
