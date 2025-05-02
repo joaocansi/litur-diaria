@@ -122,18 +122,6 @@ resource "vercel_project_domain" "client_domain" {
   domain     = var.client_domain
 }
 
-# resource "vercel_deployment" "client_deploy" {
-#   delete_on_destroy = true
-
-#   project_id = vercel_project.client.id
-#   production = true
-#   ref = "main"
-
-#   depends_on = [
-#     vercel_project_environment_variables.client_vars
-#   ]
-# }
-
 # resource "stripe_webhook_endpoint" "webhook" {
 #   url         = var.client_url
 #   description = "service webhook"
