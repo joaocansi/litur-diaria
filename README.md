@@ -2,6 +2,8 @@
 
 **Litur-Diaria** is a web app built with [Next.js](https://nextjs.org/) that delivers the **daily Catholic liturgy** along with an **AI-generated reflection** directly to subscribers' emails.
 
+This project is deployed at [https://liturgia.joaocansi.site](https://liturgia.joaocansi.site). You can subscribe using a test credit card from [stripe](https://docs.stripe.com/testing). Since I'm using a free mailer (mailtrap), you may not receive any e-mail if the limit has been exceeded.
+
 ## ✨ Features
 
 - 📖 **Automatically fetches** daily liturgical texts from [Canção Nova](https://liturgia.cancaonova.com/pb/)
