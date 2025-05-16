@@ -5,6 +5,12 @@ import Stripe from "stripe";
 
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
 
+export const config = {
+    api: {
+      bodyParser: false,
+    },
+};  
+
 async function buffer(readable: ReadableStream<Uint8Array>) {
     const reader = readable.getReader();
     const chunks = [];
