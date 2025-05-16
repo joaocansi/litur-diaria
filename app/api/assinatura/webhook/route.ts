@@ -1,16 +1,7 @@
 import { Payment } from "@/dynamodb";
 import { stripeClient } from "@/stripe";
-import { headers } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
-
-const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
-
-export const config = {
-    api: {
-      bodyParser: false,
-    },
-};  
 
 async function buffer(readable: ReadableStream<Uint8Array>) {
     const reader = readable.getReader();
@@ -28,29 +19,29 @@ async function buffer(readable: ReadableStream<Uint8Array>) {
 }
 
 export async function POST(req: NextRequest) {
+    const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!;
+
     if (!req.body || !webhookSecret) {
-        return new NextResponse('1', { status: 400 });
+        return new NextResponse(null, { status: 400 });
     }
 
-    const re = await headers()
-    const sig = re.get('stripe-signature');
+    const sig = req.headers.get('stripe-signature');
     if (!sig) {
-        return new NextResponse(sig, { status: 400 });
+        return new NextResponse(null, { status: 400 });
     }
 
     let rawBody: Buffer;
     try {
         rawBody = await buffer(req.body);
     } catch {
-        return new NextResponse(sig, { status: 400 });
+        return new NextResponse(null, { status: 400 });
     }
 
     let event: Stripe.Event;
     try {
         event = stripeClient.webhooks.constructEvent(rawBody, sig, webhookSecret);
-    } catch (error) {
-        const errorMessage = error instanceof Error ? error.message : "Unknown error";
-        return new NextResponse(`Webhook Error: ${errorMessage} ${sig}`, { status: 400 });
+    } catch {
+        return new NextResponse(null, { status: 400 });
     }
 
     const { type: eventType, data: { object: eventData } } = event;
@@ -70,8 +61,7 @@ export async function POST(req: NextRequest) {
                 break;
         }
     } catch (error) {
-        const errorMessage = error instanceof Error ? error.message : "Unknown error";
-        return new NextResponse(`Event Handling Error: ${errorMessage}`, { status: 400 });
+        return new NextResponse(null, { status: 400 });
     }
 
     return new NextResponse(null, { status: 200 });
