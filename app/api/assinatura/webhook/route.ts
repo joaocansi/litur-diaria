@@ -61,8 +61,7 @@ export async function POST(req: NextRequest) {
                 break;
         }
     } catch (error) {
-        console.log(error);
-        return new NextResponse(null, { status: 400 });
+        return new NextResponse(String(error), { status: 400 });
     }
 
     return new NextResponse(null, { status: 200 });
