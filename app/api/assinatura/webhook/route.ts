@@ -22,19 +22,19 @@ async function buffer(readable: ReadableStream<Uint8Array>) {
 
 export async function POST(req: NextRequest) {
     if (!req.body || !webhookSecret) {
-        return new NextResponse(null, { status: 400 });
+        return new NextResponse('1', { status: 400 });
     }
 
     const sig = req.headers.get('stripe-signature');
     if (!sig) {
-        return new NextResponse(null, { status: 400 });
+        return new NextResponse('2', { status: 400 });
     }
 
     let rawBody: Buffer;
     try {
         rawBody = await buffer(req.body);
     } catch {
-        return new NextResponse(null, { status: 400 });
+        return new NextResponse('3', { status: 400 });
     }
 
     let event: Stripe.Event;
