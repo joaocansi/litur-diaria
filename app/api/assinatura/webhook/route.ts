@@ -27,14 +27,14 @@ export async function POST(req: NextRequest) {
 
     const sig = req.headers.get('stripe-signature');
     if (!sig) {
-        return new NextResponse('2', { status: 400 });
+        return new NextResponse(sig, { status: 400 });
     }
 
     let rawBody: Buffer;
     try {
         rawBody = await buffer(req.body);
     } catch {
-        return new NextResponse('3', { status: 400 });
+        return new NextResponse(sig, { status: 400 });
     }
 
     let event: Stripe.Event;
@@ -42,7 +42,7 @@ export async function POST(req: NextRequest) {
         event = stripeClient.webhooks.constructEvent(rawBody, sig, webhookSecret);
     } catch (error) {
         const errorMessage = error instanceof Error ? error.message : "Unknown error";
-        return new NextResponse(`Webhook Error: ${errorMessage}`, { status: 400 });
+        return new NextResponse(`Webhook Error: ${errorMessage} ${sig}`, { status: 400 });
     }
 
     const { type: eventType, data: { object: eventData } } = event;
