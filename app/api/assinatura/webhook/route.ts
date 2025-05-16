@@ -1,5 +1,6 @@
 import { Payment } from "@/dynamodb";
 import { stripeClient } from "@/stripe";
+import { headers, headers } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 
@@ -31,7 +32,8 @@ export async function POST(req: NextRequest) {
         return new NextResponse('1', { status: 400 });
     }
 
-    const sig = req.headers.get('stripe-signature');
+    const re = await headers()
+    const sig = re.get('stripe-signature');
     if (!sig) {
         return new NextResponse(sig, { status: 400 });
     }
