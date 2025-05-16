@@ -40,8 +40,9 @@ export async function POST(req: NextRequest) {
     let event: Stripe.Event;
     try {
         event = stripeClient.webhooks.constructEvent(rawBody, sig, webhookSecret);
-    } catch {
-        return new NextResponse(null, { status: 400 });
+    } catch (error) {
+        const errorMessage = error instanceof Error ? error.message : "Unknown error";
+        return new NextResponse(`Webhook Error: ${errorMessage}`, { status: 400 });
     }
 
     const { type: eventType, data: { object: eventData } } = event;
@@ -61,7 +62,8 @@ export async function POST(req: NextRequest) {
                 break;
         }
     } catch (error) {
-        return new NextResponse(String(error), { status: 400 });
+        const errorMessage = error instanceof Error ? error.message : "Unknown error";
+        return new NextResponse(`Event Handling Error: ${errorMessage}`, { status: 400 });
     }
 
     return new NextResponse(null, { status: 200 });
